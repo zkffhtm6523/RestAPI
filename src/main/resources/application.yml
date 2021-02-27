@@ -11,6 +11,6 @@ spring:
     username: sa
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    properties.hibernate.hbm2ddl.auto: update
+    properties.hibernate.hbm2ddl.auto: none
     # JPA가 실행하는 쿼리를 Console 출력
     showSql: true

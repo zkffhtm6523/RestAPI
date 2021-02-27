@@ -11,15 +11,16 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController // JSON으로 출력
+@RestController // 결과값을 JSON으로 출력합니다.
 @RequestMapping(value = "/v1")
 public class UserController {
     private final UserJpaRepo userJpaRepo;
 
-    @GetMapping("/user")
+    @GetMapping(value = "/user")
     public List<User> findAllUser() {
         return userJpaRepo.findAll();
     }
+
     @PostMapping(value = "/user")
     public User save() {
         User user = User.builder()
