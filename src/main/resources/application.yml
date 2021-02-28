@@ -11,10 +11,12 @@ spring:
     username: sa
   jpa:
     database-platform: org.hibernate.dialect.H2Dialect
-    properties.hibernate.hbm2ddl.auto: none
+    properties.hibernate.hbm2ddl.auto: update
     # JPA가 실행하는 쿼리를 Console 출력
     showSql: true
     # i18n 경로 추가 및 인코딩 설정
   messages:
     basename: i18n/exception
     encoding: UTF-8
+  jwt:
+    secret: govlepel@$&
