@@ -1,5 +1,6 @@
 package com.miniWeb.restAPI.controller.v1;
 
+import com.miniWeb.restAPI.advice.exception.CUserNotFoundException;
 import com.miniWeb.restAPI.entity.User;
 import com.miniWeb.restAPI.model.response.CommonResult;
 import com.miniWeb.restAPI.model.response.ListResult;
@@ -35,7 +36,12 @@ public class UserController {
     @GetMapping(value = "/user/{msrl}")
     public SingleResult<User> findUserById(@ApiParam(value = "회원ID", required = true) @PathVariable long msrl){
         // 결과 데이터가 단일인 경우 getBasicResult를 이용하여 결과 출력
-        return responseService.getSingleResult(userJpaRepo.findById(msrl).orElse(null));
+        // 기존 1번 : Exception 처리 X -> null 리턴
+        // return responseService.getSingleResult(userJpaRepo.findById(msrl).orElse(null));
+        // 기존 2번 : Exception 처리
+//        return responseService.getSingleResult(userJpaRepo.findById(msrl).orElseThrow(Exception::new));
+        // 기존 3번 : userNotFoundException 처리
+        return responseService.getSingleResult(userJpaRepo.findById(msrl).orElseThrow(CUserNotFoundException::new));
     }
 
     @ApiOperation(value = "회원 등", notes = "회원을 등록한다.")
