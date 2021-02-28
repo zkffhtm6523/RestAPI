@@ -1,7 +1,7 @@
 package com.miniWeb.restAPI.config;
 
-import lombok.Value;
 import net.rakugakibox.util.YamlResourceBundle;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,19 +44,18 @@ public class MessageConfiguration implements WebMvcConfigurer {
             return ResourceBundle.getBundle(basename, locale, YamlResourceBundle.Control.INSTANCE);
         }
     }
-
-//    @Bean // yml 파일을 참조하는 MessageSource 선언
-//    public MessageSource messageSource(
-//            @Value("${spring.messages.basename}") String basename,
-//            @Value("${spring.messages.encoding}") String encoding
-//    ){
-//        YamlMessageSource ms = new YamlMessageSource();
-//        ms.setBasename(basename);
-//        ms.setDefaultEncoding(encoding);
-//        ms.setAlwaysUseMessageFormat(true);
-//        ms.setUseCodeAsDefaultMessage(true);
-//        ms.setFallbackToSystemLocale(true);
-//        return ms;
-//    }
+    @Bean // yml 파일을 참조하는 MessageSource 선언
+    public MessageSource messageSource(
+            @Value("${spring.messages.basename}") String basename,
+            @Value("${spring.messages.encoding}") String encoding
+    ){
+        YamlMessageSource ms = new YamlMessageSource();
+        ms.setBasename(basename);
+        ms.setDefaultEncoding(encoding);
+        ms.setAlwaysUseMessageFormat(true);
+        ms.setUseCodeAsDefaultMessage(true);
+        ms.setFallbackToSystemLocale(true);
+        return ms;
+    }
 
 }
