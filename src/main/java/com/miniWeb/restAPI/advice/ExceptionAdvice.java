@@ -1,5 +1,6 @@
 package com.miniWeb.restAPI.advice;
 
+import com.miniWeb.restAPI.advice.exception.CEmailSigninFailedException;
 import com.miniWeb.restAPI.advice.exception.CUserNotFoundException;
 import com.miniWeb.restAPI.model.response.CommonResult;
 import com.miniWeb.restAPI.service.ResponseService;
@@ -59,5 +60,12 @@ public class ExceptionAdvice {
     // code 정보, 추가 argument로 현재 locale에 맞는 메세지를 조회
     private String getMessage(String code, Object[] args){
         return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
+    }
+
+    // Spring Security 설정_1
+    @ExceptionHandler(CEmailSigninFailedException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    protected CommonResult emailSigninFailed(HttpServletRequest request, CEmailSigninFailedException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("emailSigninFailed.code")), getMessage("emailSigninFailed.msg"));
     }
 }

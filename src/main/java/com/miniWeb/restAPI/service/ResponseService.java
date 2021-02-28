@@ -9,7 +9,7 @@ import java.util.List;
 
 // 해당 class가 Service임을 명시
 @Service
-public class    ResponseService {
+public class ResponseService {
     // enum으로 api 요청 결과에 대한 code, message를 정의
     public enum CommonResponse{
         SUCCESS(0, "성공하였습니다."),
