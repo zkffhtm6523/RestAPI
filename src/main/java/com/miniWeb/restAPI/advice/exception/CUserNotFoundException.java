@@ -1,14 +1,16 @@
 package com.miniWeb.restAPI.advice.exception;
 
 // prefix C : Customer
-public class CUserNotFoundException extends RuntimeException{
-    public CUserNotFoundException(String msg, Throwable t){
+public class CUserNotFoundException extends RuntimeException {
+    public CUserNotFoundException(String msg, Throwable t) {
         super(msg, t);
     }
-    public CUserNotFoundException(String msg){
+
+    public CUserNotFoundException(String msg) {
         super(msg);
     }
-    public CUserNotFoundException(){
+
+    public CUserNotFoundException() {
         super();
     }
 }

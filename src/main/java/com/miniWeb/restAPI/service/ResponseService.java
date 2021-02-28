@@ -47,7 +47,7 @@ public class ResponseService {
     }
 
     // 성공 결과만 처리하는 메소드
-    public CommonResult getSucessResult(){
+    public CommonResult getSuccessResult(){
         CommonResult result = new CommonResult();
         setSuccessResult(result);
         return result;
