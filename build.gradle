@@ -41,6 +41,8 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	// JWT(JSON web Token)
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
+	implementation 'junit:junit:4.12'
+	implementation 'junit:junit:4.12'
 	// -----------------------------------------------------------------------
 
 	// lombok : getter/setter 간소화
@@ -52,8 +54,9 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 
-	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'io.projectreactor:reactor-test'
+	// Junit 테스트
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
 }
 
