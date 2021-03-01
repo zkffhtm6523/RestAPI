@@ -27,18 +27,21 @@ public class User implements UserDetails {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long msrl;
 
-    // uid column을 명시합니다. 필수이고 유니크한 필드이며 길이는 30입니다.
-    @Column(nullable = false, unique = true, length = 30)
+    // uid column을 명시합니다. 필수이고 유니크한 필드이며 길이는 50입니다.
+    @Column(nullable = false, unique = true, length = 50)
     private String uid;
 
     // Json 출력 결과 선택 X
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     private String password;
 
     // name column을 명시합니다. 필수이고 길이는 100입니다.
     @Column(nullable = false, length = 100)
     private String name;
+
+    @Column(length = 100)
+    private String provider;
 
     @ElementCollection(fetch = FetchType.EAGER)
     @Builder.Default

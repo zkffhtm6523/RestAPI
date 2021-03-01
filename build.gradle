@@ -43,6 +43,8 @@ dependencies {
 	implementation 'io.jsonwebtoken:jjwt:0.9.1'
 	implementation 'junit:junit:4.12'
 	implementation 'junit:junit:4.12'
+	// SNS 연동(Kakao)
+	implementation 'com.google.code.gson:gson'
 	// -----------------------------------------------------------------------
 
 	// lombok : getter/setter 간소화
@@ -54,10 +56,11 @@ dependencies {
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
 
-	testImplementation 'io.projectreactor:reactor-test'
 	// Junit 테스트
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.security:spring-security-test'
+
+	testImplementation 'io.projectreactor:reactor-test'
 }
 
 test {

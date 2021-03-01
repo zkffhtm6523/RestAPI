@@ -18,5 +18,18 @@ spring:
   messages:
     basename: i18n/exception
     encoding: UTF-8
+    # Spring Security JWT 토큰
   jwt:
     secret: govlepel@$&
+    # 소셜 로그인 환경 설정
+  social:
+    kakao:
+      # 앱생성시 받은 REST API 키
+      client_id: "8127a2e47df0fec2a7e7e664e8a7f2a7"
+      redirect: /social/login/kakao
+      url:
+        login: https://kauth.kakao.com/oauth/authorize
+        token: https://kauth.kakao.com/oauth/token
+        profile: https://kapi.kakao.com/v2/user/me
+  url:
+    base: http://localhost:8080

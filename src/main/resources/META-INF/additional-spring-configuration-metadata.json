@@ -4,6 +4,36 @@
       "name": "spring.jwt.secret",
       "type": "java.lang.String",
       "description": "Description for spring.jwt.secret."
-  }
-]
+    },
+    {
+      "name": "spring.social.kakao.redirect",
+      "type": "java.lang.String",
+      "description": "Description for spring.social.kakao.redirect."
+    },
+    {
+      "name": "spring.social.kakao.url.login",
+      "type": "java.lang.String",
+      "description": "Description for spring.social.kakao.url.login."
+    },
+    {
+      "name": "spring.social.kakao.url.token",
+      "type": "java.lang.String",
+      "description": "Description for spring.social.kakao.url.token."
+    },
+    {
+      "name": "spring.social.kakao.url.profile",
+      "type": "java.lang.String",
+      "description": "Description for spring.social.kakao.url.profile."
+    },
+    {
+      "name": "spring.url.base",
+      "type": "java.lang.String",
+      "description": "Description for spring.url.base."
+    },
+    {
+      "name": "spring.social.kakao.client_id",
+      "type": "java.lang.String",
+      "description": "Description for spring.social.kakao.client_id."
+    }
+  ]
 }

@@ -1,8 +1,6 @@
 package com.miniWeb.restAPI.advice;
 
-import com.miniWeb.restAPI.advice.exception.CAuthenticationEntryPointException;
-import com.miniWeb.restAPI.advice.exception.CEmailSigninFailedException;
-import com.miniWeb.restAPI.advice.exception.CUserNotFoundException;
+import com.miniWeb.restAPI.advice.exception.*;
 import com.miniWeb.restAPI.model.response.CommonResult;
 import com.miniWeb.restAPI.service.ResponseService;
 import lombok.RequiredArgsConstructor;
@@ -64,7 +62,7 @@ public class ExceptionAdvice {
         return messageSource.getMessage(code, args, LocaleContextHolder.getLocale());
     }
 
-    // Spring Security 설정_1
+    // Spring Security 설정
     @ExceptionHandler(CEmailSigninFailedException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     protected CommonResult emailSigninFailed(HttpServletRequest request, CEmailSigninFailedException e) {
@@ -81,5 +79,17 @@ public class ExceptionAdvice {
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public CommonResult AccessDeniedException(HttpServletRequest request, AccessDeniedException e) {
         return responseService.getFailResult(Integer.valueOf(getMessage("accessDenied.code")), getMessage("accessDenied.msg"));
+    }
+
+    // SNS 통신 설정
+    @ExceptionHandler(CCommunicationException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public CommonResult communicationException(HttpServletRequest request, CCommunicationException e) {
+        return responseService.getFailResult(Integer.valueOf(getMessage("communicationError.code")), getMessage("communicationError.msg"));
+    }
+    @ExceptionHandler(CUserExistException.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public CommonResult communicationException(HttpServletRequest request, CUserExistException e){
+        return responseService.getFailResult(Integer.valueOf(getMessage("existingUser.code")), getMessage("existingUser.msg"));
     }
 }

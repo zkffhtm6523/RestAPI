@@ -15,3 +15,13 @@ entryPointException:
 accessDenied:
   code: "-1003"
   msg: "A resource that can not be accessed with the privileges it has."
+
+# Kakao 통신 설정
+communicationError:
+  code: "-1004"
+  msg: "An error occurred during communication."
+
+# SNS Login(Kakao)
+existingUser:
+  code: "-1005"
+  msg: "You are an existing member."
