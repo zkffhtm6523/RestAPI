@@ -1,0 +1,37 @@
+logging:
+  level:
+    root: warn
+    com.miniWeb.restAPI: debug
+  file:
+    path: /home/ec2-user/app/log
+  logback:
+    rollingpolicy:
+      max-history: 7
+
+spring:
+  config:
+    activate:
+      on-profile: dev
+  freemarker:
+    template-loader-path: classpath:/templates
+    suffix: .ftl
+  datasource:
+    url: jdbc:mysql://127.0.0.1:33060/daddyprogrammer?useUnicode=true&autoReconnect=true&characterEncoding=utf8&allowMultiQueries=true&useSSL=false
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: miniWeb
+    password: miniWeb123
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties.hibernate:
+      hbm2ddl.auto: none
+      format_sql: true
+    # JPA가 실행하는 쿼리를 Console 출력
+    showSql: true
+    generate-ddl: false
+  url:
+    base: http://localhost:8080
+  redis:
+    host: local
+    port: 6379
+
+

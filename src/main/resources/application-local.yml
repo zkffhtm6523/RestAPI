@@ -1,0 +1,27 @@
+logging:
+  level:
+    root: warn
+    com.miniWeb.restAPI: debug
+
+spring:
+  config:
+    activate:
+      on-profile: local
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/test
+    driver-class-name: org.h2.Driver
+    username: sa
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    properties.hibernate:
+      hbm2ddl.auto: update
+      format_sql: true
+
+    # JPA가 실행하는 쿼리를 Console 출력
+    showSql: true
+    generate-ddl: true
+  url:
+    base: http://localhost:8080
+  redis:
+    host: localhost
+    port: 6379
