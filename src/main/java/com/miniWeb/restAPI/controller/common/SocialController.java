@@ -1,6 +1,7 @@
 package com.miniWeb.restAPI.controller.common;
 
 import com.google.gson.Gson;
+import com.miniWeb.restAPI.model.social.RetKakaoAuth;
 import com.miniWeb.restAPI.service.user.KakaoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
@@ -40,13 +41,15 @@ public class SocialController {
                     .append("&response_type=code")
                     .append("&redirect_uri=").append(baseUrl).append(kakaoRedirect);
         mav.addObject("loginUrl", loginUrl);
+        //templates 경로의 화면을 보여준다
         mav.setViewName("social/login");
         return mav;
     }
     // 카카오 인증 완료 후 redirect
     @GetMapping(value = "/kakao")
     public ModelAndView redirectKakao(ModelAndView mav, @RequestParam String code){
-        mav.addObject("authInfo", kakaoService.getKakaoTokenInfo(code));
+        RetKakaoAuth vo = kakaoService.getKakaoTokenInfo(code);
+        mav.addObject("authInfo", vo);
         mav.setViewName("social/redirectKakao");
         return mav;
     }

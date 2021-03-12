@@ -61,7 +61,9 @@ public class KakaoService {
         // Set http entity
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(params, headers);
         ResponseEntity<String> response = restTemplate.postForEntity(env.getProperty("spring.social.kakao.url.token"), request, String.class);
+        // 통신 결과 200일 때
         if(response.getStatusCode() == HttpStatus.OK){
+            // Json 타입으로 리턴
             return gson.fromJson(response.getBody(), RetKakaoAuth.class);
         }
         return null;
